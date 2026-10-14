@@ -21,25 +21,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-    # Entornos virtuales
-    .venv /
-    venv /
-    env /
-
-    # Archivos temporales de Python
-    __pycache__ /
-    *.py[cod]
-
-    # Configuración local de PyCharm
-    .idea /
-
-    # Variables y secretos
-    .env
-    .env. *
-
-    # Base de datos local
-    db.sqlite3
-
-    # Archivos estáticos recopilados
-    staticfiles /
-
