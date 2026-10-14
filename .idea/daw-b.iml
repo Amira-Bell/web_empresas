@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.id="pyproject.toml" type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../DAW_B">
+      <excludeFolder url="file://$MODULE_DIR$/../DAW_B/.venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="C:\Django\daw_b\.venv" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/../DAW_B\templates" />
+      </list>
+    </option>
+  </component>
+</module>

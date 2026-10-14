@@ -1,0 +1,76 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Blog | La Caffettiera{% endblock %}
+
+{% block content %}
+    <!-- Filtro de Categorías -->
+    {% if categories %}
+      <div class="container pt-4 pb-0">
+        <div class="row">
+          <div class="col-xl-9 mx-auto text-center">
+            <div class="bg-faded rounded p-3 mb-3">
+              <span class="section-heading-upper d-inline-block font-weight-bold mr-2">Categorías:</span>
+              <a href="{% url 'blog' %}" class="link mx-2 {% if not current_category %}font-weight-bold{% endif %}">Todas</a>
+              {% for cat in categories %}
+                · <a href="{% url 'category' cat.id %}" class="link mx-2 {% if current_category and current_category.id == cat.id %}font-weight-bold{% endif %}">{{ cat.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Listado de Posts -->
+    {% if posts %}
+      {% for post in posts %}
+        <section class="page-section cta my-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-9 mx-auto">
+                <div class="cta-innerv text-center rounded">
+                  <h2 class="section-heading mb-5">
+                    <span class="section-heading-upper">{{ post.published|date:"d/m/Y" }}</span>
+                    <span class="section-heading-lower">{{ post.title }}</span>
+                  </h2>
+                  {% if post.image %}
+                    <p class="mb-0">
+                      <img class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ post.image.url }}" alt="{{ post.title }}">
+                    </p>
+                  {% endif %}
+                  <p class="mb-0 mbt">
+                    {{ post.content|linebreaks }}
+                  </p>
+                  <p class="mb-0 mbt">
+                    <span class="section-heading-under">
+                      Publicado por <em><b>{% if post.author.first_name %}{{ post.author.first_name }} {{ post.author.last_name }}{% else %}{{ post.author.username }}{% endif %}</b></em> en <em><a href="{% url 'category' post.category.id %}" class="link">{{ post.category.name }}</a></em>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      {% endfor %}
+    {% else %}
+      <section class="page-section cta">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <div class="cta-innerv text-center rounded">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-lower">Sin publicaciones</span>
+                </h2>
+                <p class="mb-0">
+                  {% if current_category %}
+                    No hay publicaciones en la categoría <em>{{ current_category.name }}</em>.
+                  {% else %}
+                    Aún no hay publicaciones en el blog.
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+{% endblock %}
