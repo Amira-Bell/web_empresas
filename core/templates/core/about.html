@@ -13,8 +13,18 @@
                   <span class="section-heading-upper">Tradición familiar italiana</span>
                   <span class="section-heading-lower">Nuestra historia</span>
                 </h2>
-                <p>Fundada en 1987 consectetur adipiscing elit. Donec leo dui, vehicula vel dapibus ac, tempus non enim. Nunc tempor vel lacus vel gravida. Nam sit amet pellentesque mi. </p>
-                <p>Curabitur efficitur pellentesque tellus nec volutpat. In viverra mattis sem, facilisis condimentum mi rutrum ut. Quisque ut pellentesque dui.Nullam eu vehicula metus. Pellentesque id interdum elit. Aenean in efficitur enim.</p>
+                {% if persona %}
+                  <h3 class="mb-3">{{ persona.nombres }} {{ persona.apellidos }}</h3>
+                  <p class="mb-1"><strong>Título académico:</strong> {{ persona.titulo_academico }}</p>
+                  <p class="mb-1"><strong>Dedicación:</strong> {{ persona.dedicacion }}</p>
+                  <p class="mb-1"><strong>Dirección:</strong> {{ persona.direccion }}</p>
+                  <p class="mb-1"><strong>Teléfono:</strong> {{ persona.telefono }}</p>
+                  <p class="mb-3"><strong>Correo electrónico:</strong> <a href="mailto:{{ persona.correo_electronico }}">{{ persona.correo_electronico }}</a></p>
+                  <h4>Biografía</h4>
+                  <p>{{ persona.biografia|linebreaksbr }}</p>
+                {% else %}
+                  <p>Aún no se han cargado los datos de la persona. Ingresa al administrador de Django para crearlos.</p>
+                {% endif %}
               </div>
             </div>
           </div>

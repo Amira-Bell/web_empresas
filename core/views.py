@@ -1,11 +1,13 @@
 from django.shortcuts import render
+from .models import Persona
 
 # Create your views here.
 def index(request):
     return render(request, template_name= 'core/index.html')
 
 def about(request):
-    return render(request, template_name= 'core/about.html')
+    persona = Persona.objects.first()
+    return render(request, 'core/about.html', {'persona': persona})
 
 def blog(request):
     return render(request, template_name= 'core/blog.html')
